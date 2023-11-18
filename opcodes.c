@@ -11,13 +11,24 @@ void push(stack_t **stack, unsigned int line_number)
 	char *token = strtok(NULL, " \t\n");
 	int value = atoi(token);
 	stack_t *new_node = malloc(sizeof(stack_t));
+	int i;
 
-	if (!token || !isdigit(*token))
+	if (!token)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_stack();
 		exit(EXIT_FAILURE);
 	}
+
+    for (i = 0; token[i] != '\0'; i++)
+    {
+        if (!isdigit(token[i]))
+        {
+            fprintf(stderr, "L%d: usage: push integer\n", line_number);
+            free_stack();
+            exit(EXIT_FAILURE);
+        }
+    }
 
 	if (!new_node)
 	{
