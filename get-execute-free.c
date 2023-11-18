@@ -25,7 +25,7 @@ instruction_t opcodes[] = {
 
 /**
  * get_instruction - gets the opcode instruction to execute
- * @opcode - the opcode to execute
+ * @opcode: the opcode to execute
  * Return: the opcode if found in the array
  */
 void *get_instruction(char *opcode)
@@ -46,7 +46,7 @@ void *get_instruction(char *opcode)
 
 /**
  * execute_file - executes the file using the opcode received
- * @file: name of file to execute
+ * @file_path: name of file to execute
  * Return: void
  */
 void execute_file(char *file_path)
@@ -67,7 +67,6 @@ void execute_file(char *file_path)
 	{
 		line_number++;
 		opcode = strtok(line, " \t\n");
-		
 		if (opcode && opcode[0] != '#')
 		{
 			instruction = get_instruction(opcode);
@@ -91,16 +90,17 @@ void execute_file(char *file_path)
 
 /**
  * free_stack - frees a dlistint_t list.
- * 
+ *
  * Return: void
  */
 void free_stack(void)
 {
 	stack_t *current = stack;
+	stack_t *next;
 
 	while (current)
 	{
-		stack_t *next = current->next;
+		next = current->next;
 		free(current);
 		current = next;
 	}

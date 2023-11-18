@@ -5,7 +5,7 @@ stack_t *stack = NULL;
 
 /**
  * main - main entry point of program
- * 	gets command line arguments
+ *	gets command line arguments
  * @argc: argument count
  * @argv: argumnent vector (an array)
  * Return: 0 on success

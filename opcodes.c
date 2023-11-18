@@ -76,8 +76,7 @@ void pint(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * div_op - divides the second top element of the stack by the top element of the stack
- * 
+ * div_op - divides the second top element of the stack by the top element
  * @stack: doubly linked list
  * @line_number: line number
  * Return: void

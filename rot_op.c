@@ -22,7 +22,6 @@ void rotl(stack_t **stack, unsigned int line_number)
 
 		while (last->next)
 			last = last->next;
-	
 		*stack = second;
 		second->prev = NULL;
 		last->next = first;

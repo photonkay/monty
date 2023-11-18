@@ -14,6 +14,12 @@ void stack_op(stack_t **stack, unsigned int line_number)
 	/* since the program is already in stack format */
 }
 
+/**
+ * queue_op - sets the format to a queue
+ * @stack: doubly linked list
+ * @line_number: line number
+ * Return: void
+*/
 void queue_op(stack_t **stack, unsigned int line_number)
 {
 	stack_t *front;
@@ -24,13 +30,11 @@ void queue_op(stack_t **stack, unsigned int line_number)
 	{
 		front = *stack;
 		last = *stack;
-	
 		while (last->next)
 			last = last->next;
 
 		*stack = (*stack)->next;
 		(*stack)->prev = NULL;
-	
 		last->next = front;
 		front->prev = last;
 		front->next = NULL;
