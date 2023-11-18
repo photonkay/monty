@@ -9,15 +9,21 @@
 void push(stack_t **stack, unsigned int line_number)
 {
 	char *token = strtok(NULL, " \t\n");
-	int value = atoi(token);
-	stack_t *new_node = malloc(sizeof(stack_t));
-	int i;
+	stack_t *new_node;
+	int i, value = 0;
+	int sign = 1;
 
 	if (!token)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_stack();
 		exit(EXIT_FAILURE);
+	}
+
+	if (*token == '-')
+	{
+		sign = -1;
+		token++;
 	}
 
 	for (i = 0; token[i] != '\0'; i++)
@@ -28,7 +34,11 @@ void push(stack_t **stack, unsigned int line_number)
 			free_stack();
 			exit(EXIT_FAILURE);
 		}
+		value = value * 10 + (token[i] - '0');
 	}
+
+	value *= sign;
+	new_node = malloc(sizeof(stack_t));
 
 	if (!new_node)
 	{
@@ -43,7 +53,6 @@ void push(stack_t **stack, unsigned int line_number)
 
 	if (*stack)
 		(*stack)->prev = new_node;
-
 	*stack = new_node;
 }
 
