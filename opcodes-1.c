@@ -80,7 +80,7 @@ void sub(stack_t **stack, unsigned int line_number)
 {
 	int result;
 
-	if (!stack || !(*stack)->next)
+	if (!stack || !*stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
 		free_stack();
@@ -90,5 +90,7 @@ void sub(stack_t **stack, unsigned int line_number)
 	result = (*stack)->next->n - (*stack)->n;
 
 	pop(stack, line_number);
+	if (*stack)
+		(*stack)->n = result;
 	(*stack)->n = result;
 }
