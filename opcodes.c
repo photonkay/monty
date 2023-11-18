@@ -96,7 +96,7 @@ void div_op(stack_t **stack, unsigned int line_number)
 {
 	int result;
 
-	if (!stack || !*stack ||!(*stack)->next)
+	if (!stack || !*stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
 		free_stack();
