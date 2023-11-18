@@ -63,5 +63,6 @@ void rotl(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
 void stack_op(stack_t **stack, unsigned int line_number);
 void queue_op(stack_t **stack, unsigned int line_number);
+void reverse_stack(stack_t **stack);
 
 #endif /* _MONTY_H */
