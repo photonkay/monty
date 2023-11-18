@@ -19,13 +19,11 @@ void push(stack_t **stack, unsigned int line_number)
 		free_stack();
 		exit(EXIT_FAILURE);
 	}
-
 	if (*token == '-')
 	{
 		sign = -1;
 		token++;
 	}
-
 	for (i = 0; token[i] != '\0'; i++)
 	{
 		if (!isdigit(token[i]))
@@ -36,21 +34,17 @@ void push(stack_t **stack, unsigned int line_number)
 		}
 		value = value * 10 + (token[i] - '0');
 	}
-
 	value *= sign;
 	new_node = malloc(sizeof(stack_t));
-
 	if (!new_node)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		free_stack();
 		exit(EXIT_FAILURE);
 	}
-
 	new_node->n = value;
 	new_node->prev = NULL;
 	new_node->next = *stack;
-
 	if (*stack)
 		(*stack)->prev = new_node;
 	*stack = new_node;
